@@ -1,0 +1,18 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    max-width: $max-width;
+
+    @media (min-width: $screen-sm) {
+        flex-direction: row;
+    }
+
+    .signup{
+        display: flex;
+        align-items: center;
+        font-family: $main-font;
+        font-size: $font-size;
+    }
+}

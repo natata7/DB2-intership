@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "form-window.css",
+	"sources": [
+		"../../../src/form-window/form-window.scss"
+	],
+	"sourcesContent": [
+		""
+	],
+	"names": [],
+	"mappings": ""
+}
