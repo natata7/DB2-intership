@@ -19,7 +19,16 @@
   "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^10.2.4",
+    "browser-sync": "^2.26.14",
     "css-loader": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-nunjucks-render": "^2.2.3",
+    "gulp-sass": "^4.1.0",
+    "gulp-watch": "^5.0.1",
+    "imagemin-pngquant": "^9.0.1",
     "modern-css-reset": "^1.4.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
@@ -30,6 +39,7 @@
     "postcss-preset-env": "^6.7.0",
     "purgecss": "^4.0.2",
     "sass-loader": "^11.0.1",
+    "sassdoc": "^2.7.3",
     "style-loader": "^2.0.0",
     "stylelint": "^13.11.0"
   }

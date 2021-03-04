@@ -26,6 +26,8 @@
         border-radius: 5px;
         padding: 13px 11px;
         margin-bottom: 25px;
+        box-sizing: border-box;
+        font-size: $font-size--sm;
 
         &:last-of-type{
             margin-bottom: 0;
@@ -34,13 +36,38 @@
         &:active,
         &:focus{
             outline: none;
-            border-left: 2px solid #2A74DB;
+            border-left: 2px solid $color-blue;
         }
     }
 
     .pass--recovery{
         display: flex;
         justify-content: flex-end;
+        font-size: $font-size--sm;
+        margin: 15px 0;
     }
+
+    
         
+}
+
+.button{
+    width: 100%;
+}
+
+.button__wrap{
+    display: flex;
+    justify-content: flex-end;
+}
+
+button.submit{
+    background-color: $color-green;
+    color: $color-white;
+    padding: 10px 50px;
+    font-family: $title-font;
+    font-size: $font-size;
+    border-radius: $border-radius;
+    outline: none;
+    border: none;
+
 }

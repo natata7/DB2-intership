@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./dist/assets/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2&family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Roboto:wght@400;600&display=swap" rel="stylesheet">
     <title>Sing in</title>
 </head>
 <body>
@@ -45,7 +45,11 @@
                 <input type="email" name="email" id="email">
                 <input type="password" name="password" id="password">
                 <a class="pass--recovery">Forgot password?</a>
-                <button type="submit">Sign in</button>
+                <div class="button">
+                    <div class="button__wrap">
+                        <button class="submit" type="submit">Sign in</button>
+                    </div>
+                </div>
             </form>
         </section>
     </main>

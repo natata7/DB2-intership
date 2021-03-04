@@ -4,9 +4,14 @@
     align-content: center;
     justify-content: space-between;
     max-width: $max-width;
+    margin: 0 auto;
 
     @media (min-width: $screen-sm) {
         flex-direction: row;
+    }
+
+    .logo{
+        padding-left: 25px;
     }
 
     .signup{
@@ -14,5 +19,13 @@
         align-items: center;
         font-family: $main-font;
         font-size: $font-size;
+        padding-right: 25px;
+
+        &__link{
+            color: #ffffff; // $color-blue;
+            font-weight: 600;
+            margin: 0 5px;
+        }
     }
+
 }
