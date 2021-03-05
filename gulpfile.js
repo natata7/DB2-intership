@@ -65,15 +65,25 @@ gulp.task('scripts', function() {
 // -----------------------------------------------------------------------------
 
 gulp.task('nunjucks', function() {
-  nunjucksRender.nunjucks.configure(['./templates/']);
+  //nunjucksRender.nunjucks.configure(['./pages/']);
   // Gets .html and .nunjucks files in pages
   return gulp.src(inputTemplates)
   // Renders template with nunjucks
-  .pipe(nunjucksRender())
+  .pipe(nunjucksRender({
+    path: ['pages/']
+  }))
   // output files in dist folder
   .pipe(gulp.dest(siteOutput))
 });
 
+
+gulp.task('render', function() {
+  return gulp.src(inputTemplates)
+  .pipe(nunjucksRender({
+    path: ['./pages/']
+  }))
+  .pipe(gulp.dest( './dist/' )) ;
+});
 
 // -----------------------------------------------------------------------------
 // Imagemin
@@ -143,6 +153,11 @@ gulp.task('watch', function() {
 
 gulp.task('watch', function() {
   gulp.watch('src/**/*.scss', gulp.series('sass'));
+  gulp.watch('src/**/*.html', gulp.series('nunjucks'));
+  gulp.watch("scr/*.html").on('change', () => {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+    browserSync.reload();
+});
 });
 
 // -----------------------------------------------------------------------------

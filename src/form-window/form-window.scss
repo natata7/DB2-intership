@@ -45,6 +45,12 @@
         justify-content: flex-end;
         font-size: $font-size--sm;
         margin: 15px 0;
+        color: $text-color;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
     }
 
     

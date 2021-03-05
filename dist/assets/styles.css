@@ -13,6 +13,7 @@
           justify-content: space-between;
   max-width: 1160px;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 @media (min-width: 480px) {
@@ -41,7 +42,7 @@
 }
 
 .header .signup__link {
-  color: #ffffff;
+  color: #2A74DB;
   font-weight: 600;
   margin: 0 5px;
 }
@@ -122,6 +123,12 @@ body {
           justify-content: flex-end;
   font-size: 0.75rem;
   margin: 15px 0;
+  color: #222428;
+  text-decoration: none;
+}
+
+.form-window .pass--recovery:hover {
+  text-decoration: underline;
 }
 
 .button {

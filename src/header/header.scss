@@ -5,6 +5,7 @@
     justify-content: space-between;
     max-width: $max-width;
     margin: 0 auto;
+    padding: 20px 0;
 
     @media (min-width: $screen-sm) {
         flex-direction: row;
@@ -22,7 +23,7 @@
         padding-right: 25px;
 
         &__link{
-            color: #ffffff; // $color-blue;
+            color: $color-blue;
             font-weight: 600;
             margin: 0 5px;
         }
