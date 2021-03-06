@@ -23,9 +23,9 @@ var { watch, series } = require('gulp');
 // -----------------------------------------------------------------------------
 
 var input = './src/*.scss';
-var inputMain = './src/styles.scss';
+var inputMain = 'src/scss/styles.scss';
 var output = siteOutput + '/assets';
-var inputTemplates = './pages/*.html';
+var inputTemplates = './src/pages/*.html';
 var sassOptions = { outputStyle: 'expanded' };
 var autoprefixerOptions = { browsers: ['last 2 versions', '> 5%', 'Firefox ESR'] };
 var sassdocOptions = { dest: siteOutput + '/sassdoc' };
@@ -70,7 +70,7 @@ gulp.task('nunjucks', function() {
   return gulp.src(inputTemplates)
   // Renders template with nunjucks
   .pipe(nunjucksRender({
-    path: ['pages/']
+    path: ['src/pages/']
   }))
   // output files in dist folder
   .pipe(gulp.dest(siteOutput))
@@ -80,7 +80,7 @@ gulp.task('nunjucks', function() {
 gulp.task('render', function() {
   return gulp.src(inputTemplates)
   .pipe(nunjucksRender({
-    path: ['./pages/']
+    path: ['./src/pages/']
   }))
   .pipe(gulp.dest( './dist/' )) ;
 });
@@ -125,36 +125,11 @@ gulp.task('sassdoc', function() {
 // -----------------------------------------------------------------------------
 // Watchers
 // -----------------------------------------------------------------------------
-/*
-gulp.task('watch', function() {
-    // Watch the sass input folder for change,
-    // and run `sass` task when something happens
-    //gulp.watch(input, ['src']).on('change', function(event) {
-    //  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-    //});
-
-    //gulp.watch('./js/*', ['scripts']).on('change', browserSync.reload);
-
-    // Watch nunjuck templates and reload browser if change
-    //gulp.watch(inputTemplates, ['nunjucks']).on('change', browserSync.reload);
-    
-    //browserSync.init({
-    //    server: "src/"
-    //});
-
-    
-    //gulp.watch("scr/*.html", gulp.series('nunjucks'));
-    /*gulp.watch("scr/*.html").on('change', () => {
-        console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
-        browserSync.reload();
-    });*/
-  
-//});
 
 gulp.task('watch', function() {
-  gulp.watch('src/**/*.scss', gulp.series('sass'));
-  gulp.watch('src/**/*.html', gulp.series('nunjucks'));
-  gulp.watch("scr/*.html").on('change', () => {
+  gulp.watch('src/scss/**/*.scss', gulp.series('sass'));
+  gulp.watch('src/pages/*.html', gulp.series('nunjucks'));
+  gulp.watch("scr/pages/*.html").on('change', () => {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     browserSync.reload();
 });

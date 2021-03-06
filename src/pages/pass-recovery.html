@@ -1,0 +1,23 @@
+{% extends "_layout.html" %}
+
+{% set title = 'Password recovery' %}
+
+{% block header %}
+{% include "_header.html" %}
+{% endblock %}
+
+{% block content %}
+    <main class="main">
+        <section class="form-window">
+            <h1 class="form-window__title">Enter your e-mail to reset your password</h1>
+            <form action="">
+                <input type="email" name="email" id="email">
+                <div class="button">
+                    <div class="button__wrap">
+                        <button class="submit" type="submit">Send</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}

@@ -33,6 +33,12 @@
             margin-bottom: 0;
         }
 
+        &:placeholder-shown{
+            color: $color-gray;
+            font-family: $main-font;
+            font-size: $font-size--sm;
+        }
+
         &:active,
         &:focus{
             outline: none;
@@ -44,7 +50,7 @@
         display: flex;
         justify-content: flex-end;
         font-size: $font-size--sm;
-        margin: 15px 0;
+        margin-top: 15px;
         color: $text-color;
         text-decoration: none;
 
@@ -52,9 +58,6 @@
             text-decoration: underline;
         }
     }
-
-    
-        
 }
 
 .button{
@@ -75,5 +78,5 @@ button.submit{
     border-radius: $border-radius;
     outline: none;
     border: none;
-
+    margin-top: 40px;
 }

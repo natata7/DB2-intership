@@ -6,6 +6,8 @@
     max-width: $max-width;
     margin: 0 auto;
     padding: 20px 0;
+    z-index: 1000;
+    position: relative;
 
     @media (min-width: $screen-sm) {
         flex-direction: row;
@@ -26,6 +28,7 @@
             color: $color-blue;
             font-weight: 600;
             margin: 0 5px;
+            text-decoration: none;
         }
     }
 
