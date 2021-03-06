@@ -19,6 +19,11 @@ body {
     padding: 0;
 }
 
+.main{
+    min-height: 86vh;
+    display: flex;
+}
+
 .content{
     margin: 0 auto;
     max-width: $max-width;

@@ -5,10 +5,11 @@
     background: #FFFFFF;
     box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
     border-radius: 10px;
-    position: absolute;
+    /*position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);*/
+    margin: auto;
 
     .form-window__title{
         font-family: Exo 2;
@@ -22,12 +23,13 @@
 
     input{
         width: 100%;
-        border: 2px solid #F2F2F2;
-        border-radius: 5px;
         padding: 13px 11px;
         margin-bottom: 25px;
         box-sizing: border-box;
         font-size: $font-size--sm;
+        background: $background-input-color;
+        border: 2px solid #F2F2F2;
+        border-radius: 2px;
 
         &:last-of-type{
             margin-bottom: 0;
@@ -43,6 +45,7 @@
         &:focus{
             outline: none;
             border-left: 2px solid $color-blue;
+            background: $color-white;
         }
     }
 
