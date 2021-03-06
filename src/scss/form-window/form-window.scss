@@ -1,7 +1,7 @@
 .form-window{
     box-sizing: border-box;
     width: 630px;
-    padding: 70px 115px;
+    padding: 10px 20px;
     background: #FFFFFF;
     box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
     border-radius: 10px;
@@ -10,6 +10,10 @@
     left: 50%;
     transform: translate(-50%,-50%);*/
     margin: auto;
+
+    @media (min-width: $screen-md) {
+        padding: 70px 115px;
+    }
 
     .form-window__title{
         font-family: Exo 2;

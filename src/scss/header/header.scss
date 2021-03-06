@@ -5,7 +5,7 @@
     justify-content: space-between;
     max-width: $max-width;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 10px 0;
     z-index: 1000;
     position: relative;
 
@@ -14,7 +14,7 @@
     }
 
     .logo{
-        padding-left: 25px;
+        padding: 10px 25px;
     }
 
     .signup{
@@ -22,7 +22,7 @@
         align-items: center;
         font-family: $main-font;
         font-size: $font-size;
-        padding-right: 25px;
+        padding: 10px 25px;
 
         &__link{
             color: $color-blue;

@@ -13,7 +13,7 @@
           justify-content: space-between;
   max-width: 1160px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0;
   z-index: 1000;
   position: relative;
 }
@@ -28,7 +28,7 @@
 }
 
 .header .logo {
-  padding-left: 25px;
+  padding: 10px 25px;
 }
 
 .header .signup {
@@ -40,7 +40,7 @@
           align-items: center;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 1rem;
-  padding-right: 25px;
+  padding: 10px 25px;
 }
 
 .header .signup__link {
@@ -72,10 +72,11 @@ body {
 }
 
 .main {
-  min-height: 86vh;
+  min-height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 0 25px;
 }
 
 .content {
@@ -248,7 +249,7 @@ body {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   width: 630px;
-  padding: 70px 115px;
+  padding: 10px 20px;
   background: #FFFFFF;
   -webkit-box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
           box-shadow: 0px 5px 40px rgba(0, 45, 113, 0.06);
@@ -258,6 +259,12 @@ body {
     left: 50%;
     transform: translate(-50%,-50%);*/
   margin: auto;
+}
+
+@media (min-width: 768px) {
+  .form-window {
+    padding: 70px 115px;
+  }
 }
 
 .form-window .form-window__title {
