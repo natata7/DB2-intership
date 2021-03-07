@@ -8,7 +8,19 @@ h6{
 }
 
 p,
+label{
+    color: $text-color;
+}
+
 a{
+    text-decoration: none;
+    color: $color-main;
+    font-weight: 600;
+}
+
+p,
+a,
+label{
     font-family: $main-font;
     font-size: $font-size;
 }

@@ -1,0 +1,40 @@
+{% extends "_layout.html" %}
+
+{% set title = 'Sing up' %}
+
+{% set login = true %}
+
+{% block header %}
+{% include "_header.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <main class="main">
+        <section class="form-window">
+            <h1 class="form-window__title">Complete your account</h1>
+            <form action="">
+                <input onkeyup="trigger()" type="password" name="password" id="password" placeholder="Create a password" required>
+                <div class="indicator">
+                    <span class="weak"></span>
+                    <span class="medium"></span>
+                    <span class="strong"></span>
+                </div>
+                <input onkeyup="confirm()" type="password" name="password" id="confirm-password" placeholder="Confirm password" required>
+                <p id="errorBlock"></p>
+                <div class="input-wrap__label">
+                    <input type="checkbox" class="checkbox" name="terms-of-service" id="terms-of-service" value="yes"><label for="terms-of-service"><p>I agree to the myFixer.com </p><a href="#"> Terms of Service</a></label>
+                </div>
+                <div class="input-wrap__label">
+                    <input type="checkbox" class="checkbox" name="privacy-policy" id="privacy-policy" value="yes"><label for="privacy-policy"><p>I agree to the myFixer.com </p><a href="#"> Privacy Policy</a></label>
+                </div>
+                <div class="button">
+                    <div class="button__wrap">
+                        <button class="submit" type="submit">Done!</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+      
+{% endblock %}

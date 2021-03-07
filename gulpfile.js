@@ -48,17 +48,16 @@ gulp.task('sass', function() {
 // -----------------------------------------------------------------------------
 // Javascript
 // -----------------------------------------------------------------------------
-/*
+
 gulp.task('scripts', function() {
   return gulp.src([
-	  	'./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-	  	'js/main.js'
+	  	'src/js/main.js'
   	])
     .pipe(concat({ path: 'main.js'}))
     .pipe(browserSync.reload({stream:true}))
     .pipe(gulp.dest(siteOutput + '/js'));
 });
-*/
+
 
 // -----------------------------------------------------------------------------
 // Templating
@@ -128,6 +127,7 @@ gulp.task('sassdoc', function() {
 
 gulp.task('watch', function() {
   gulp.watch('src/scss/**/*.scss', gulp.series('sass'));
+  gulp.watch('src/js/*.js', gulp.series('scripts'));
   gulp.watch('src/pages/*.html', gulp.series('nunjucks'));
   gulp.watch("scr/pages/*.html").on('change', () => {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
@@ -152,4 +152,4 @@ gulp.task('browser-sync', function() {
 // Default task
 // -----------------------------------------------------------------------------
 
-gulp.task('default', gulp.series('sass', 'nunjucks', 'img', 'watch', 'browser-sync'));
+gulp.task('default', gulp.series('sass', 'scripts', 'nunjucks', 'img', 'watch', 'browser-sync'));
