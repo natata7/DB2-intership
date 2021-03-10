@@ -1,0 +1,46 @@
+.left-bar{
+    width: 80px;
+    height: 100%;
+    background-color: $color-dark-blue;
+    position: fixed;
+    left: 0;
+
+    .logo{
+        width: 100%;
+        padding: 18px 0;
+        flex-grow: 1;
+
+        svg{
+            display: block;
+            margin: auto;
+        }
+    }
+
+    .nav-bar{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 2;
+
+        .nav-bar__item{
+            height: 50px;
+            display: flex;
+            padding: 15px 0;
+
+            &:hover,
+            &:focus{
+                &::before{
+                    content: '';
+                    width: 4px;
+                    background-color: #0AD69C;
+                    height: 100%;
+                    left: 0;
+                }
+            }
+        }
+
+        svg{
+            margin: auto;
+            display: block;
+        }
+    }
+}

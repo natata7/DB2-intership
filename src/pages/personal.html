@@ -1,0 +1,26 @@
+{% extends "_layout.html" %}
+
+{% set title = 'Profile' %}
+
+{% block header %}
+{% include "_left-bar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <main class="main">
+        <section class="form-window">
+            <h1 class="form-window__title">Sign in</h1>
+            <form action="">
+                <input type="email" name="email" id="email">
+                <input type="password" name="password" id="password">
+                <a class="pass-recovery" href="./pass-recovery.html">Forgot password?</a>
+                <div class="button">
+                    <div class="button__wrap">
+                        <button class="submit" type="submit">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </main>
+{% endblock %}
