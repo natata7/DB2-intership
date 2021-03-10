@@ -4,6 +4,8 @@
     background-color: $color-dark-blue;
     position: fixed;
     left: 0;
+    display: flex;
+    flex-direction: column;
 
     .logo{
         width: 100%;
@@ -25,15 +27,23 @@
             height: 50px;
             display: flex;
             padding: 15px 0;
+            position: relative;
+            opacity: .5;
+            transition: all 0.5s ease-in;
 
             &:hover,
             &:focus{
+                opacity: 1;
+
                 &::before{
                     content: '';
                     width: 4px;
+                    position: absolute;
                     background-color: #0AD69C;
                     height: 100%;
                     left: 0;
+                    top: 0;
+                    transition: all 0.5s ease-in;
                 }
             }
         }
@@ -42,5 +52,58 @@
             margin: auto;
             display: block;
         }
+    }
+}
+
+.top-bar{
+    height: 60px;
+    background: $color-white;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #DAE4F2;
+}
+
+.breadcrumbs{
+    display: flex;
+    height: 100%;
+    margin: 0;
+
+    .breadcrumbs-item{
+        list-style: none;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+
+        &::after{
+            background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="6px" height="9px" viewBox="0 0 6 9" fill="none"><path d="M1.13514 -0.000183105L4.85176e-08 0.985687L3.72973 4.22498L4.85176e-08 7.46426L1.13514 8.45014L6 4.22498L1.13514 -0.000183105Z" fill="%230AD69C"/></svg>');
+            width: 6px;
+            content: '';
+            height: 8px;
+            display: block;
+            margin-left: 10px;
+        }
+        &:last-of-type::after{
+            display: none;
+        }
+    }
+}
+
+.profile-name{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: $text-color;
+    font-weight: 400;
+
+    &::after{
+        background-image:url('data:image/svg+xml,<svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2222 1.13514L9.13328 4.85176e-08L5.5555 3.72973L1.97772 4.85176e-08L0.888834 1.13514L5.5555 6L10.2222 1.13514Z" fill="%23252F48"/></svg>');
+            width: 11px;
+            content: '';
+            height: 6px;
+            display: block;
+            margin-left: 20px;
     }
 }

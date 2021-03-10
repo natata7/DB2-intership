@@ -89,7 +89,7 @@ gulp.task('render', function() {
 // -----------------------------------------------------------------------------
 
 gulp.task('img', function() {
-  return gulp.src('./img/**/*')
+  return gulp.src('./src/images/*')
     .pipe(imagemin({
       progressive: true,
       svgoPlugins: [{removeViewBox: false}],

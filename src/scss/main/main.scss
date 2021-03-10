@@ -20,7 +20,9 @@ a{
 
 p,
 a,
-label{
+label,
+ul li,
+ol li{
     font-family: $main-font;
     font-size: $font-size;
 }
@@ -148,4 +150,8 @@ body {
     100% {
         opacity: .54;
     }
+}
+
+.left-bar+.profile-header+.main{
+    margin-left: 80px;
 }
