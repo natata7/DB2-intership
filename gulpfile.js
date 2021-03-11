@@ -51,6 +51,7 @@ gulp.task('sass', function() {
 
 gulp.task('scripts', function() {
   return gulp.src([
+      'src/js/intlTelInput.js',
 	  	'src/js/main.js'
   	])
     .pipe(concat({ path: 'main.js'}))

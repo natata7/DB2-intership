@@ -1,5 +1,5 @@
 const indicator = document.querySelector(".indicator");
-const input = document.querySelector("input");
+const formInput = document.querySelector("input");
 const weak = document.querySelector(".weak");
 const medium = document.querySelector(".medium");
 const strong = document.querySelector(".strong");
@@ -8,32 +8,32 @@ const confirmPass = document.querySelector("#confirm-password");
 const errorBlock = document.querySelector("#errorBlock");
 
 function trigger() {
-  if (input.value != "") {
+  if (formInput.value != "") {
     indicator.style.display = "block";
     indicator.style.display = "flex";
     let protect = 0;
 
-    if (input.value.length < 8) {
+    if (formInput.value.length < 8) {
       weak.classList.add("active");
     }
 
     var small = "([a-z]+)";
-    if (input.value.match(small)) {
+    if (formInput.value.match(small)) {
       protect++;
     }
 
     var big = "([A-Z]+)";
-    if (input.value.match(big)) {
+    if (formInput.value.match(big)) {
       protect++;
     }
 
     var numb = "([0-9]+)";
-    if (input.value.match(numb)) {
+    if (formInput.value.match(numb)) {
       protect++;
     }
 
     var vv = /\W/;
-    if (input.value.match(vv)) {
+    if (formInput.value.match(vv)) {
       protect++;
     }
 
@@ -66,6 +66,25 @@ function trigger() {
 function confirm() {
   if (pass.value != confirmPass.value) {
     errorBlock.innerHTML = 'Password mismatch';
+  }
 }
-}
-confirm-password
+//confirm();
+
+
+const tabTriggers = document.querySelectorAll('#tabs-header__item');
+
+
+tabTriggers.forEach(function(tabTrigger) {
+  tabTrigger.addEventListener('click', function() {
+      var id = this.getAttribute('data-tab'),
+          content = document.querySelector('.tabs-content__item[data-tab="'+id+'"]'),
+          activeTrigger = document.querySelector('.tabs-header__item.active'),
+          activeContent = document.querySelector('.tabs-content__item.active');
+      
+      activeTrigger.classList.remove('active'); 
+      tabTrigger.classList.add('active'); 
+      
+      activeContent.classList.remove('active'); 
+      content.classList.add('active'); 
+   });
+});
