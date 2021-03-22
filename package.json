@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "koa": "^2.13.1",
     "nunjucks": "^3.2.3"
   },
   "devDependencies": {
@@ -31,6 +32,9 @@
     "gulp-sass": "^4.1.0",
     "gulp-watch": "^5.0.1",
     "imagemin-pngquant": "^9.0.1",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^7.0.1",
     "modern-css-reset": "^1.4.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",
