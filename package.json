@@ -9,8 +9,8 @@
     "css-purge": "purgecss --css dist/assets/styles.css --content index.html --output dist/assets/",
     "css": "npm-run-all css-compile css-prefix",
     "watch": "nodemon -e html,scss -x \"npm run css\"",
-    "server": "nodemon ./app.js",
-    "start": "node ./app.js"
+    "server": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
