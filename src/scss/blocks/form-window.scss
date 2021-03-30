@@ -28,7 +28,7 @@
     .pass--recovery{
         display: flex;
         justify-content: flex-end;
-        font-size: $font-size--sm;
+        font-size: $font-size--xsm;
         margin-top: -15px;
         color: $text-color;
         text-decoration: none;
@@ -60,7 +60,7 @@ select,
     padding: 13px 11px;
     margin-bottom: 25px;
     box-sizing: border-box;
-    font-size: $font-size--sm;
+    font-size: $font-size--xsm;
     background: $background-input-color;
     border: 2px solid #F2F2F2;
     border-radius: 2px;
@@ -72,7 +72,7 @@ select,
     &:placeholder-shown{
         color: $color-gray;
         font-family: $main-font;
-        font-size: $font-size--sm;
+        font-size: $font-size--xsm;
         opacity: .57;
     }
 
@@ -203,7 +203,7 @@ button.submit{
 
 #errorBlock {
     color: #ff4757;
-    font-size: $font-size--sm;
+    font-size: $font-size--xsm;
 }
 
 .indicator span.medium:before,
