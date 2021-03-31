@@ -1,6 +1,7 @@
 {% extends "_layout.html" %}
 
 {% set title = 'Profile' %}
+{% set profileActive = true %}
 
 {% block header %}
 {% include "_left-bar.html" %}
@@ -62,7 +63,17 @@
                     </form>
                 </div>
                 <div class="tabs-content__item" data-tab="2">
-
+                    <form action="">
+                        <div class="input-wrap__row">
+                            <label for="name">Username</label>
+                            <input type="name" name="name" id="name" placeholder="Faruh">
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" placeholder="sarahbarnes@gmail.com">
+                        </div>
+                        <a href="" class="change-pass">Change password</a>
+                    </form>
                 </div>
             </div>
         </section>

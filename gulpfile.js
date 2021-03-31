@@ -16,6 +16,8 @@ var imagemin = require('gulp-imagemin');
 var pngquant = require('imagemin-pngquant');
 var siteOutput = './dist';
 var { watch, series } = require('gulp');
+var replace = require('gulp-replace');
+var myEnv = require('./.env');
 
 
 // -----------------------------------------------------------------------------
@@ -54,6 +56,7 @@ gulp.task('scripts', function() {
       'src/js/intlTelInput.js',
 	  	'src/js/main.js'
   	])
+    .pipe(replace('mapbox_access_token', myEnv.mapbox_access_token))
     .pipe(concat({ path: 'main.js'}))
     .pipe(browserSync.reload({stream:true}))
     .pipe(gulp.dest(siteOutput + '/js'));

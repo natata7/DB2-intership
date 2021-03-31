@@ -1421,3 +1421,27 @@ tabTriggers.forEach(function(tabTrigger) {
       content.classList.add('active'); 
    });
 });
+
+
+var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibmF0czciLCJhIjoiY2ttamtkdDgwMHJzNjJ2bnoxN3RjMjZ5cCJ9.NIf79YnLXoEWKUFJ6ifirA'
+}).addTo(mymap);
+var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+let searchResultTogler = document.querySelector('.search-result__togler');
+let searchResultsSort = document.querySelector('.sort');
+let searchResultsTiles = document.querySelector('.search-results__tiles');
+let searchResultsMap = document.querySelector('.search-results__map');
+
+searchResultTogler.addEventListener('click', (e) => {
+  e.preventDefault();
+  searchResultsTiles.classList.toggle('active');
+  searchResultsMap.classList.toggle('active');
+  searchResultsSort.classList.toggle('active');
+});
