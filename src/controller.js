@@ -1,6 +1,6 @@
 
 async function signIn(ctx) {
-  await ctx.render("signin", {
+  await ctx.render("signIn", {
     title: "Sign in",
   });
 }
@@ -46,6 +46,15 @@ async function list(ctx) {
   await ctx.render("_list", {
     title: "List",
   });
+}
+
+async function createUser(ctx) {
+  const { body } = ctx.request;
+  await validator.schema.validateAsync(body);
+  const createUserResponse = await db.query(
+    `INSERT INTO "users" (fname, lname, login, email) VALUES 
+    ('${body.fname}', '${body.lname}', '${body.login}', '${body.email}') RETURNING *`
+  );
 }
   
 module.exports = {
