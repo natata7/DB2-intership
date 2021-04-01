@@ -10,7 +10,9 @@ router.get("Password-recovery", controllers.passRecovery);
 router.get("Succses-password-recovery", controllers.succsesPassRecovery)
 router.get("Reset-password", controllers.newPass);
 router.get("SignUp", controllers.signUp);
+router.get("admin", controllers.admin);
 router.get("", controllers.list);
+
 module.exports = {
-  router,
+  router
 };

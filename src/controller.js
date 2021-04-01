@@ -1,3 +1,4 @@
+const db = require('./db');
 
 async function signIn(ctx) {
   await ctx.render("signIn", {
@@ -42,21 +43,31 @@ async function signUp(ctx) {
     title: "Sign up",
   });
 }
+
+async function admin(ctx) {
+  await showUsers(ctx);
+  await ctx.render("admin", {
+    title: "Manage users",
+  });
+}
+
 async function list(ctx) {
   await ctx.render("_list", {
     title: "List",
   });
 }
 
-async function createUser(ctx) {
-  const { body } = ctx.request;
-  await validator.schema.validateAsync(body);
-  const createUserResponse = await db.query(
-    `INSERT INTO "users" (fname, lname, login, email) VALUES 
-    ('${body.fname}', '${body.lname}', '${body.login}', '${body.email}') RETURNING *`
-  );
-}
-  
+async function showUsers(ctx) {
+  const usersResponse = await db.query(`SELECT users.fname, users.lname, users.email
+  FROM users
+  GROUP BY users.fname, users.lname, users.email`);
+  console.log('hello db ' + usersResponse.fields[0].fname);
+  await ctx.render('admin', { 
+    'usersResponse': usersResponse.rows
+  });
+};
+
+
 module.exports = {
   signIn,
   profile,
@@ -67,4 +78,5 @@ module.exports = {
   newPass,
   signUp,
   list,
+  admin
 };

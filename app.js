@@ -29,6 +29,7 @@ app.use(render);
 app.use(serve(path.join(__dirname, "/dist")));
 
 router.use("/", globalRouter.router.routes());
+app.use(router.routes());
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
