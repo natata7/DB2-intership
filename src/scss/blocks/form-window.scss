@@ -23,6 +23,7 @@
         line-height: 34px;
         letter-spacing: 0.4px;
         color: $color-main;
+        margin-bottom: 30px;
     }
 
     .pass--recovery{
@@ -51,6 +52,14 @@
 .input-wrap__label{
     display: flex;
     justify-content: flex-start;
+}
+.checkbox-wrap{
+    padding-bottom: 15px;
+
+    p,
+    a{
+        font-weight: 300;
+    }
 }
 
 input,

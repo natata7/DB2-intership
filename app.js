@@ -6,6 +6,7 @@ const serve = require("koa-static");
 const globalRouter = require("./src/router");
 const globalDB = require("./src/db");
 const nunjucks = require("nunjucks");
+const bodyParser = require('koa-body');
 const port = process.env.PORT || 3001;
 
 const app = new Koa();
@@ -24,6 +25,12 @@ const render = views(path.join(__dirname, "/src/pages"), {
     html: "nunjucks",
   },
 });
+
+app.use(bodyParser({
+  formidable:{uploadDir: './uploads'},
+  multipart: true,
+  urlencoded: true
+}));
 
 app.use(render);
 app.use(serve(path.join(__dirname, "/dist")));
