@@ -459,6 +459,7 @@ body {
   line-height: 34px;
   letter-spacing: 0.4px;
   color: #002396;
+  margin-bottom: 30px;
 }
 
 .form-window .pass--recovery {
@@ -498,6 +499,15 @@ body {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+.checkbox-wrap {
+  padding-bottom: 15px;
+}
+
+.checkbox-wrap p,
+.checkbox-wrap a {
+  font-weight: 300;
 }
 
 input,

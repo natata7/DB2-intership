@@ -1,6 +1,6 @@
-//const db = require('./db');
 
 const { pool } = require("./db");
+
 
 async function signIn(ctx) {
   await ctx.render("signIn", {
@@ -84,6 +84,33 @@ async function deleteUser(ctx) {
   
 }
 
+async function createUser(ctx) {
+  const client = await pool.connect();
+  const body = ctx.request.body;
+
+  const createUserResponse = await client.query(`
+    INSERT INTO users (fname, lname, email, login)
+    VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${body.login}')
+    RETURNING *
+  `);
+
+  ctx.status = 200;
+  ctx.redirect('/complete');
+
+  //const user = { ...createUserResponse.rows[0] };
+
+  // await ctx.redis.set(category.num, JSON.stringify(category));
+/*
+  ctx.status = 201;
+  ctx.body = {
+    id: users.id,
+    fname: users.fname,
+    lname: users.lname,
+    email: users.email,
+    country: users.country
+  }; */
+}
+
 
 module.exports = {
   signIn,
@@ -96,5 +123,6 @@ module.exports = {
   signUp,
   list,
   admin,
-  deleteUser
+  deleteUser,
+  createUser
 };
