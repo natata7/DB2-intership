@@ -1,6 +1,6 @@
 {% extends "_layout.html" %}
 
-{% set title = 'Manage users' %}
+
 {% set searchActive = true %}
 
 {% block header %}
@@ -11,7 +11,6 @@
 
     <main class="main">
         <section class="admin-window">
-            {{usersResponse }}
             <table>
                 <thead>
                     <td>First name</td>
@@ -23,20 +22,25 @@
                     <td></td>
                 </thead>
                 <tbody>
+                    {% for row in usersResponse %}
                     <tr>
-                        <td>Richard</td>
-                        <td>Richard</td>
-                        <td>Australia</td>
-                        <td>Requested</td>
-                        <td>Gold</td>
-                        <td>richard@gmail.com</td>
+                        <td>{{ row.fname }}</td>
+                        <td>{{ row.lname }}</td>
+                        <td>{{ row.country }}</td>
+                        <td>{{ row.status }}</td>
+                        <td>{{ row.level }}</td>
+                        <td>{{ row.email }}</td>
                         <td>
-                            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 0.9L8.1 0L4.5 3.6L0.9 0L0 0.9L3.6 4.5L0 8.1L0.9 9L4.5 5.4L8.1 9L9 8.1L5.4 4.5L9 0.9Z" fill="#A9AFC5"/>
-                                </svg>
-                                
+                            <div class="delete-user" id="{{ row.id }}">
+                                <a href="/admin/{{ row.id }}/delete/" class="delete-link">
+                                    <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 0.9L8.1 0L4.5 3.6L0.9 0L0 0.9L3.6 4.5L0 8.1L0.9 9L4.5 5.4L8.1 9L9 8.1L5.4 4.5L9 0.9Z" fill="#A9AFC5"/>
+                                    </svg>
+                                </a>
+                            </div> 
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </section>
