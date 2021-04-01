@@ -1,4 +1,6 @@
-const db = require('./db');
+//const db = require('./db');
+
+const { pool } = require("./db");
 
 async function signIn(ctx) {
   await ctx.render("signIn", {
@@ -46,9 +48,6 @@ async function signUp(ctx) {
 
 async function admin(ctx) {
   await showUsers(ctx);
-  await ctx.render("admin", {
-    title: "Manage users",
-  });
 }
 
 async function list(ctx) {
@@ -58,14 +57,32 @@ async function list(ctx) {
 }
 
 async function showUsers(ctx) {
-  const usersResponse = await db.query(`SELECT users.fname, users.lname, users.email
-  FROM users
-  GROUP BY users.fname, users.lname, users.email`);
-  console.log('hello db ' + usersResponse.fields[0].fname);
-  await ctx.render('admin', { 
-    'usersResponse': usersResponse.rows
+  const client = await pool.connect();
+  
+  try{
+    const usersResponse = await client.query(`
+    SELECT users.fname, users.lname, users.email, users.country, users.status, users.level, users.id 
+    FROM users`);
+    console.log(usersResponse.rows);
+    
+    await ctx.render('admin', {
+      title: "Manage users",
+      usersResponse: usersResponse.rows
   });
+  } finally {
+    
+  }
 };
+
+async function deleteUser(ctx) {
+  console.log(ctx.params);
+  const client = await pool.connect();
+  let result = await client.query(`DELETE FROM users WHERE id=${ctx.params.id}`);
+  ctx.status = 200;
+  ctx.redirect('/admin');
+  await showUsers(ctx);
+  
+}
 
 
 module.exports = {
@@ -78,5 +95,6 @@ module.exports = {
   newPass,
   signUp,
   list,
-  admin
+  admin,
+  deleteUser
 };
