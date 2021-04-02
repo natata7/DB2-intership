@@ -1,5 +1,7 @@
 
 const { pool } = require("./db");
+const Redis = require("ioredis");
+const redis = new Redis();
 
 
 async function signIn(ctx) {
@@ -64,11 +66,15 @@ async function showUsers(ctx) {
     SELECT users.fname, users.lname, users.email, users.country, users.status, users.level, users.id 
     FROM users`);
     console.log(usersResponse.rows);
+
+    const getRedis = await redis.hgetall('*');
+
+    console.log(getRedis);
     
     await ctx.render('admin', {
       title: "Manage users",
       usersResponse: usersResponse.rows
-  });
+    });
   } finally {
     
   }
@@ -77,7 +83,10 @@ async function showUsers(ctx) {
 async function deleteUser(ctx) {
   console.log(ctx.params);
   const client = await pool.connect();
-  let result = await client.query(`DELETE FROM users WHERE id=${ctx.params.id}`);
+  await client.query(`DELETE FROM users WHERE id=${ctx.params.id}`);
+
+  await redis.del(ctx.params.id);
+    
   ctx.status = 200;
   ctx.redirect('/admin');
   await showUsers(ctx);
@@ -91,24 +100,17 @@ async function createUser(ctx) {
   const createUserResponse = await client.query(`
     INSERT INTO users (fname, lname, email, login)
     VALUES ('${body.fname}', '${body.lname}', '${body.email}', '${body.login}')
-    RETURNING *
+    RETURNING id
   `);
+
+  console.log(createUserResponse.rows[0].id);
+  console.log(body.fname);
+
+  await redis.mset(createUserResponse.rows[0].id, JSON.stringify(body) );
 
   ctx.status = 200;
   ctx.redirect('/complete');
 
-  //const user = { ...createUserResponse.rows[0] };
-
-  // await ctx.redis.set(category.num, JSON.stringify(category));
-/*
-  ctx.status = 201;
-  ctx.body = {
-    id: users.id,
-    fname: users.fname,
-    lname: users.lname,
-    email: users.email,
-    country: users.country
-  }; */
 }
 
 
