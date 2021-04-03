@@ -9,7 +9,7 @@ const redis = new Redis({
 
 
 async function signIn(ctx) {
-  await ctx.render("signIn", {
+  await ctx.render("signin", {
     title: "Sign in",
   });
 }
@@ -47,7 +47,7 @@ async function newPass(ctx) {
 }
 
 async function signUp(ctx) {
-  await ctx.render("signUp", {
+  await ctx.render("signup", {
     title: "Sign up",
   });
 }
