@@ -1,7 +1,11 @@
 
 const { pool } = require("./db");
 const Redis = require("ioredis");
-const redis = new Redis();
+const redis = new Redis({
+  port: process.env.REDIS_PORT, 
+  host: process.env.REDIS_DB,
+  password: process.env.DATABASE_PASS
+});
 
 
 async function signIn(ctx) {
