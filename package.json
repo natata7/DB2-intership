@@ -4,20 +4,25 @@
   "description": "",
   "scripts": {
     "build": "npm run css",
-    "css-compile": "node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 src/styles.scss -o assets/css/",
-    "css-lint": "stylelint scss/",
-    "css-prefix": "postcss --replace assets/css/styles.css --use autoprefixer --map",
-    "css-purge": "purgecss --css assets/css/styles.css --content index.html --output assets/css/",
+    "css-compile": "node-sass --include-path node_modules --output-style compressed --source-map true --source-map-contents true --precision 6 src/scss/styles.scss -o dist/assets/",
+    "css-prefix": "postcss --replace dist/assets/styles.css --use autoprefixer --map",
+    "css-purge": "purgecss --css dist/assets/styles.css --content index.html --output dist/assets/",
     "css": "npm-run-all css-compile css-prefix",
-    "server": "serve --listen 3000",
-    "start": "npm-run-all --parallel watch server",
     "watch": "nodemon -e html,scss -x \"npm run css\"",
-    "test": "npm run css-lint && npm run css"
+    "server": "nodemon app.js",
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nunjucks": "^3.2.3"
+    "ioredis": "^4.24.6",
+    "koa": "^2.13.1",
+    "koa-body": "^4.2.0",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^7.0.1",
+    "nunjucks": "^3.2.3",
+    "pg": "^8.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.4",
@@ -28,9 +33,12 @@
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-nunjucks-render": "^2.2.3",
+    "gulp-replace": "^1.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-watch": "^5.0.1",
     "imagemin-pngquant": "^9.0.1",
+    "koa-static": "^5.0.0",
+    "koa-views": "^7.0.1",
     "modern-css-reset": "^1.4.0",
     "node-sass": "^5.0.0",
     "nodemon": "^2.0.7",

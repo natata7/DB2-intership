@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
     
     <title>Sing up</title>
 </head>
@@ -50,12 +58,12 @@
     <main class="main">
         <section class="form-window">
             <h1 class="form-window__title">Sign up</h1>
-            <form action="">
+            <form action="/add" method="post">
                 <div class="input-wrap__row">
-                    <input type="name" name="name" id="name" placeholder="Name">
-                    <input type="last name" name="last name" id="last name" placeholder="Last Name">
+                    <input type="name" name="fname" id="name" placeholder="Name">
+                    <input type="last name" name="lname" id="last name" placeholder="Last Name">
                 </div>
-                <input type="username" name="username" id="username" placeholder="Username">
+                <input type="username" name="login" id="username" placeholder="Username">
                 <input type="email" name="email" id="email" placeholder="E-mail">
                 <div class="button">
                     <div class="button__wrap">

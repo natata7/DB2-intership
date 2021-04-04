@@ -1,0 +1,359 @@
+{% extends "_layout.html" %}
+
+{% set title = 'Search' %}
+{% set searchActive = true %}
+
+{% block header %}
+{% include "_left-bar.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <main class="main">
+        <section class="search-window">
+            <aside class="search-form">
+                <form action="">
+                    <div class="input__row location">
+                        <label for="location">Location</label>
+                        
+                        <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                        </svg>                     
+                        <input type="location" name="location" id="location">           
+                        
+                    </div>
+                    <div class="input__row">
+                        <label for="search">Search</label>
+                        <input type="search" name="search" id="search" placeholder="Type your query...">
+                    </div>
+                    <div class="input__row">
+                        <label for="category">Category</label>
+                        <select name="category" id="category">
+                            <option value="Category 1">Category 1</option>
+                            <option value="Category 2">Category 2</option>
+                            <option value="Category 3">Category 3</option>
+                        </select>
+                    </div>
+                    <div class="input__row">
+                        <label for="service">Service</label>
+                        <select name="service" id="service">
+                            <option value="3 services">3 services</option>
+                        </select>
+                    </div>
+                    <div class="input__row">
+                        <label for="period">Period</label>
+                        <input name="period" id="period">
+                    </div>
+                    <button class="search" type="submit">Search</button>
+                </form>
+            </aside>
+            <section class='search-results'>
+                <div class="search-results__control-elements">
+                    <a href="" class="search-result__togler">Show map:</a>
+                    <div class="sort active">
+                        <div class="sort-ads">
+                            <svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="1" y1="6.07874" x2="1" y2="10.8502" stroke="#01134E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="4.64284" y1="4.38574" x2="4.64284" y2="10.8501" stroke="#01134E" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="8.28575" y1="2.69287" x2="8.28575" y2="10.8501" stroke="#01134E" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="11.9286" y1="1" x2="11.9286" y2="10.8501" stroke="#01134E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>                                
+                        </div>
+                            <input type="radio" id="byPrise" name="sort" value="byPrise" checked>
+                            <label class="radio" for="byPrise">by prise</label>
+
+                            <input type="radio" id="byRating" name="sort" value="byRating">
+                            <label class="radio" for="byRating">by rating</label>
+                    </div>
+                </div>
+                <div class="search-results__tiles active">
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_1.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_2.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_3.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_4.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_5.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result__item">
+                        <div class="tile-photo">
+                            <img src="./img/person_5.png" alt="Avatar">
+                        </div>
+                        <div class="text-wrap">
+                            <div class="name">
+                                <h3>Richard Thompson</h3>
+                                <div class="star">
+                                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <g filter="url(#filter0_d)">
+                                        <circle cx="13" cy="12" r="8" fill="white"/>
+                                        </g>
+                                        <path d="M18.6001 10.4683L14.8907 9.68539L13.0001 6.39966V15.5044L16.461 17.0514L16.0593 13.2817L18.6001 10.4683Z" fill="#F9C800"/>
+                                        <path d="M11.1094 9.68576L7.4 10.4686L9.94083 13.2821L9.5391 17.0517L13 15.5047V6.40002L11.1094 9.68576Z" fill="#FFE060"/>
+                                        <defs>
+                                        <filter id="filter0_d" x="0" y="0" width="26" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                        <feOffset dy="1"/>
+                                        <feGaussianBlur stdDeviation="2.5"/>
+                                        <feColorMatrix type="matrix" values="0 0 0 0 0.513291 0 0 0 0 0.541829 0 0 0 0 0.635371 0 0 0 0.24 0"/>
+                                        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+                                        </filter>
+                                        </defs>
+                                        </svg>
+                                        
+                                </div>
+                            </div>
+                            <div class="location">
+                                <svg width="8" height="11" viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.99983 0C1.79443 0 4.15684e-08 1.79443 4.15684e-08 4.00006C4.15684e-08 4.57537 0.117753 5.12466 0.349813 5.63281C1.34988 7.8212 3.26729 10.1317 3.83126 10.7876C3.87352 10.8366 3.93512 10.8649 3.99994 10.8649C4.06477 10.8649 4.12637 10.8366 4.16862 10.7876C4.73237 10.1318 6.64978 7.82143 7.65019 5.63281C7.88236 5.12466 8 4.57537 8 4.00006C7.99978 1.79443 6.20535 0 3.99983 0ZM3.99983 6.0777C2.85421 6.0777 1.92208 5.14557 1.92208 3.99995C1.92208 2.85421 2.85421 1.92208 3.99983 1.92208C5.14545 1.92208 6.07759 2.85421 6.07759 3.99995C6.0777 5.14557 5.14557 6.0777 3.99983 6.0777Z" fill="#2A74DB"/>
+                                </svg>  
+                                <p>Vancouver, Canada</p>
+                            </div>
+                            <div class="stack">
+                                <span>Stack: </span>
+                                <p>Python, Django, Sketch</p>
+                            </div>
+                            <div class="rate">
+                                <span>Base daily rate: </span>
+                                <p>$ 1,200 USD</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-results__map">
+                    <div id="mapid" class="map">
+                        
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script>
+        $('input[name="period"]').daterangepicker();
+    </script>
+
+{% endblock %}
+

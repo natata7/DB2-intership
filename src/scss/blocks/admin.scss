@@ -1,0 +1,35 @@
+.admin-window{
+    background: $color-white;
+    padding: 20px;
+    margin: auto;
+    min-width: 80%;
+    min-height: 300px;
+
+    @media (min-width: $screen-md) {
+        padding: 45px;
+        display: flex;
+    }
+
+    table{
+        width: 100%;
+        font-family: $main-font;
+        border-collapse: collapse;
+        border: 1px solid #DAE4F2;
+        box-sizing: border-box;
+        box-shadow: -2px 9px 8px rgba(23, 31, 76, 0.03);
+        border-radius: 4px;
+        font-size: $font-size--sm;
+
+        thead{
+            background: #F5F7FA;
+            text-transform: uppercase;
+            font-weight: 500;
+            font-size: $font-size--xsm;
+        }
+
+        td{
+            padding: 15px;
+            font-weight: 300;
+        }
+    }
+}

@@ -1,6 +1,7 @@
 {% extends "_layout.html" %}
 
 {% set title = 'Profile' %}
+{% set profileActive = true %}
 
 {% block header %}
 {% include "_left-bar.html" %}
@@ -9,18 +10,83 @@
 {% block content %}
 
     <main class="main">
-        <section class="form-window">
-            <h1 class="form-window__title">Sign in</h1>
-            <form action="">
-                <input type="email" name="email" id="email">
-                <input type="password" name="password" id="password">
-                <a class="pass-recovery" href="./pass-recovery.html">Forgot password?</a>
-                <div class="button">
-                    <div class="button__wrap">
-                        <button class="submit" type="submit">Sign in</button>
-                    </div>
+        <section class="information-window">
+            <div class="tabs-header">
+                <div class="tabs-header__item active" id="tabs-header__item" data-tab="1">
+                    <h2 class="information-window__title">ACCOUNT INFORMATION</h2>
                 </div>
-            </form>
+                <div class="tabs-header__item" id="tabs-header__item" data-tab="2">
+                    <h2 class="information-window__title active">PERSONAL INFORMATION</h2>
+                </div>
+            </div>
+            <div class="tabs-content" id="tabs-content">
+                <div class="tabs-content__item active" data-tab="1">
+                    <div class="personal-photo">
+                        <img src="./img/photo.jpg" alt="Avatar">
+                        <div class="edit-link">
+                            <svg width="10" height="12" viewBox="0 0 10 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.62408 2.49908L7.98063 4.14914L3.80382 10.1143L1.4484 8.46399L5.62408 2.49908ZM9.06234 1.39465L8.0114 0.658776C7.60525 0.374386 7.04461 0.473243 6.75904 0.879601L6.05415 1.88629L8.41071 3.53637L9.23293 2.36212C9.4535 2.04709 9.37735 1.61522 9.06234 1.39465ZM0.896522 11.4646C0.888996 11.6352 1.06306 11.7561 1.22012 11.6872L3.35705 10.7523L1.00163 9.10207L0.896522 11.4646Z" fill="#2A74DB"/>
+                            </svg> 
+                            <p>Change photo</p>
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="input-wrap__row">
+                            <label for="name">First name</label>
+                            <input type="name" name="name" id="name" placeholder="Faruh">
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="lastName">Last name</label>
+                            <input type="lastName" name="lastName" id="lastName" placeholder="Bernandez">
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="title">Title</label>
+                            <select name="title" id="title">
+                                <option value="Mr.">Mr.</option>
+                                <option value="Mrs.">Mrs.</option>
+                                <option value="Ms.">Ms.</option>
+                            </select>
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="name">MOBILE PHONE</label>
+                            <input type="phone" name="phone" id="phone" placeholder="">
+                            	<div class="input-phone"></div>
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="country">COUNTRY</label>
+                            <input type="country" name="country" id="country">
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="company">COMPANY</label>
+                            <input type="company" name="company" id="company">
+                        </div>
+                    </form>
+                </div>
+                <div class="tabs-content__item" data-tab="2">
+                    <form action="">
+                        <div class="input-wrap__row">
+                            <label for="name">Username</label>
+                            <input type="name" name="name" id="name" placeholder="Faruh">
+                        </div>
+                        <div class="input-wrap__row">
+                            <label for="email">E-mail</label>
+                            <input type="email" name="email" id="email" placeholder="sarahbarnes@gmail.com">
+                        </div>
+                        <a href="" class="change-pass">Change password</a>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
+
+      <link rel="stylesheet" href="./assets/intlTelInput.css">
+      <script src="./js/intlTelInput.js"></script>
+        <script>
+        var input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            // any initialisation options go here
+        });
+        </script>
+
 {% endblock %}
+

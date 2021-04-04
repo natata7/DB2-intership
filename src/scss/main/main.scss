@@ -5,11 +5,16 @@ h4,
 h5,
 h6{
     font-family: $title-font;
+    margin: 0;
 }
 
 p,
 label{
     color: $text-color;
+}
+
+p{
+    margin: 0;
 }
 
 a{
@@ -20,7 +25,9 @@ a{
 
 p,
 a,
-label{
+label,
+ul li,
+ol li{
     font-family: $main-font;
     font-size: $font-size;
 }
@@ -148,4 +155,8 @@ body {
     100% {
         opacity: .54;
     }
+}
+
+.left-bar+.profile-header+.main{
+    margin-left: 80px;
 }
