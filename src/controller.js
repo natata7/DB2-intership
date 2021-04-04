@@ -1,18 +1,18 @@
 
 const { pool } = require("./db");
 const Redis = require("ioredis");
-const redis = new Redis({
+/*const redis = new Redis({
   port: 19458, 
   host: 'redis-19458.c251.east-us-mz.azure.cloud.redislabs.com',
   password: '5My1v1Vplrq1i2xb0zax9jcUNGc6elFn'
 });
-/*
+*/
 const redis = new Redis({
   port: 19458, 
-  host: `process.env.REDIS_DB`,
+  host: process.env.REDIS_DB,
   password: `process.env.REDIS_PASS`
 });
-*/
+
 async function signIn(ctx) {
   await ctx.render("signin", {
     title: "Sign in",
@@ -74,7 +74,7 @@ async function showUsers(ctx) {
     const usersResponse = await client.query(`
     SELECT users.fname, users.lname, users.email, users.country, users.status, users.level, users.id 
     FROM users`);
-    console.log(usersResponse.rows);
+    await client.end();
 
     const getRedis = await redis.hgetall('*');
 
@@ -93,6 +93,8 @@ async function deleteUser(ctx) {
   console.log(ctx.params);
   const client = await pool.connect();
   await client.query(`DELETE FROM users WHERE id=${ctx.params.id}`);
+
+  await client.end();
 
   await redis.del(ctx.params.id);
     
@@ -114,6 +116,8 @@ async function createUser(ctx) {
 
   console.log(createUserResponse.rows[0].id);
   console.log(body.fname);
+
+  await client.end();
 
   await redis.mset(createUserResponse.rows[0].id, JSON.stringify(body) );
 

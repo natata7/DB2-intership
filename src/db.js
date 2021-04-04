@@ -1,4 +1,5 @@
-/*const { Pool } = require('pg');
+/*
+const { Pool } = require('pg');
 
 class Database {
   constructor() {
