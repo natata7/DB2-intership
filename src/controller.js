@@ -1,18 +1,18 @@
 
 const { pool } = require("./db");
 const Redis = require("ioredis");
-/*const redis = new Redis({
+const redis = new Redis({
   port: 19458, 
   host: 'redis-19458.c251.east-us-mz.azure.cloud.redislabs.com',
   password: '5My1v1Vplrq1i2xb0zax9jcUNGc6elFn'
 });
-*/
+/*
 const redis = new Redis({
   port: 19458, 
   host: `process.env.REDIS_DB`,
   password: `process.env.REDIS_PASS`
 });
-
+*/
 async function signIn(ctx) {
   await ctx.render("signin", {
     title: "Sign in",
