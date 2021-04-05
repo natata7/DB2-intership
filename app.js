@@ -38,6 +38,17 @@ app.use(serve(path.join(__dirname, "/dist")));
 router.use("/", globalRouter.router.routes());
 app.use(router.routes());
 
+app.use(async (ctx, next) => {
+  try {
+    await next();
+  } catch (err) {
+    if (err.isJoi) {
+      ctx.throw(400, err.details[0].message);
+    }
+    ctx.throw(400, 'Something wrong');
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
