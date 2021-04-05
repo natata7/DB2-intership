@@ -78,7 +78,7 @@ async function showUsers(ctx) {
     FROM users`);
     //await pool.end();
 
-    //const getRedis = await redis.hgetall('*');
+    const getRedis = await redis.hgetall('*');
 
     //console.log(getRedis);
     
