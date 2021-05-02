@@ -56,6 +56,11 @@ async function signUp(ctx) {
     title: "Sign up",
   });
 }
+async function search(ctx) {
+  await ctx.render("search", {
+    title: "Search",
+  });
+}
 
 async function admin(ctx) {
   await showUsers(ctx);
@@ -120,7 +125,44 @@ async function createUser(ctx) {
   await redis.mset(createUserResponse.rows[0].id, JSON.stringify(body) );
 
   ctx.status = 200;
-  ctx.redirect('/complete');
+  //ctx.redirect('/complete');
+
+}
+
+async function createPass(ctx) {
+  const body = ctx.request.body;
+  body.password = crypto.pbkdf2Sync(body.password, 'salt', 100000, 64, 'sha256').toString('hex');
+  const createUserResponse = await pool.query(`
+    INSERT INTO users (pass)
+    VALUES ('${body.password}')
+    RETURNING id
+  `);
+
+  await redis.mset(createUserResponse.rows[0].id, JSON.stringify(body) );
+
+  ctx.status = 200;
+}
+
+async function login(ctx) {
+
+  const userResponse = await pool.query(`
+  SELECT * FROM "user" 
+  WHERE email = '${body.email}'
+  `);
+
+  if (!userResponse.rowCount) {
+    return { flag: false, message: `User with email: ${email} does not exist` };
+  }
+  
+  const user = { ...userResponse.rows[0] };
+  
+  const passwordHash = crypto.pbkdf2Sync(password, 'salt', 100000, 64, 'sha256').toString('hex');
+  
+  if (user.password === passwordHash) {
+    return { user, flag: true };
+  }
+  
+  return { flag: false, message: 'Incorrect password' };
 
 }
 
@@ -137,5 +179,7 @@ module.exports = {
   list,
   admin,
   deleteUser,
-  createUser
+  createUser,
+  createPass,
+  search
 };

@@ -671,9 +671,6 @@ button.submit {
 .indicator {
   height: 10px;
   margin: 10px 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

@@ -7,10 +7,14 @@ const globalRouter = require("./src/router");
 const globalDB = require("./src/db");
 const nunjucks = require("nunjucks");
 const bodyParser = require('koa-body');
+const cors = require('@koa/cors');
 const port = process.env.PORT || 3001;
 
 const app = new Koa();
 const router = new Router();
+
+const passport = require('./src/libs/passport/koaPassport');
+passport.initialize();
 
 const nunjucksEnvironment = new nunjucks.Environment(
   new nunjucks.FileSystemLoader(path.join(__dirname, "/src/pages"))
@@ -33,8 +37,13 @@ app.use(bodyParser({
 }));
 
 app.use(render);
-app.use(serve(path.join(__dirname, "/dist")));
+app.use(serve(path.join(__dirname, '/src/public')));
 
+router.use('/users', require('./src/users/users.router'));
+
+app.use(router.middleware());
+
+app.use(cors());
 router.use("/", globalRouter.router.routes());
 app.use(router.routes());
 
