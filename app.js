@@ -30,6 +30,7 @@ const render = views(path.join(__dirname, "/src/pages"), {
   },
 });
 
+app.use(cors());
 app.use(bodyParser({
   formidable:{uploadDir: './uploads'},
   multipart: true,
@@ -39,11 +40,10 @@ app.use(bodyParser({
 app.use(render);
 app.use(serve(path.join(__dirname, '/src/public')));
 
-router.use('/users', require('./src/users/users.router'));
+//router.use('/users', require('./src/users/users.router'));
 
-app.use(router.middleware());
+//app.use(router.middleware());
 
-app.use(cors());
 router.use("/", globalRouter.router.routes());
 app.use(router.routes());
 

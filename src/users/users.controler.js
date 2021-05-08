@@ -1,15 +1,20 @@
 const passport = require('koa-passport');
 const jwt = require('jwt-simple');
 
-const { UserDB } = require('./models/UserDB');
+const { UserDB } = require('../models/UserDB');
+const AWSS3 = require('../utils/uploadS3');
 
 class UsersController {
   static async signIn(ctx, next) {
+    const user = ctx.request.body;
+    console.log(ctx.request.body);
     await passport.authenticate('local', (err, user) => {
       if (user) {
         ctx.body = user;
+        
       } else {
         ctx.status = 400;
+        console.log(user);
         if (err) {
           ctx.body = { error: err };
         }
@@ -29,7 +34,7 @@ class UsersController {
     } = ctx.request.body;
 
     ctx.status = 201;
-    ctx.body = (await UserDB.createUser(fname, lname, active, password, email)).getInfo();
+    ctx.body = (await UserDB.createUser(fname, lname, active, password, email));
   }
 
   static async refresh(ctx) {

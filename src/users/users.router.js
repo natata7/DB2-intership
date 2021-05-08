@@ -1,7 +1,7 @@
 const Router = require('koa-joi-router');
 const passport = require('koa-passport');
 
-const { UsersController } = require('./users.controller');
+const { UsersController } = require('./users.controler');
 const UserValidator = require('./users.validator');
 
 const router = new Router();
