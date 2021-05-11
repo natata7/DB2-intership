@@ -1,0 +1,21 @@
+put:
+  summary: Profie
+  description: Add new photo in user profile
+  tags:
+    - Users
+  security:
+    - ApiKeyAuth: []
+  responses:
+    "200":
+      content:
+        application/json:
+          description: User object
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  photo:
+                    type: string
+                    description: User photo

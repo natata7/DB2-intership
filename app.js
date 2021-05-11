@@ -8,6 +8,7 @@ const globalDB = require("./src/db");
 const nunjucks = require("nunjucks");
 const bodyParser = require('koa-body');
 const cors = require('@koa/cors');
+const { koaSwagger } = require('koa2-swagger-ui');
 const port = process.env.PORT || 3001;
 
 const app = new Koa();
@@ -29,6 +30,15 @@ const render = views(path.join(__dirname, "/src/pages"), {
     html: "nunjucks",
   },
 });
+
+app.use(serve('docs'));
+app.use(koaSwagger({
+  routePrefix: '/docs',
+  hideTopbar: true,
+  swaggerOptions: {
+    url: 'http://localhost:3001/docs.yml',
+  },
+}));
 
 app.use(cors());
 app.use(bodyParser({

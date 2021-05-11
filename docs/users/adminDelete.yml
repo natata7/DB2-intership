@@ -1,0 +1,36 @@
+get:
+  summary: Profie
+  description: Delete user in DB
+  tags:
+    - Users
+  security:
+    - ApiKeyAuth: []
+  responses:
+    "200":
+      content:
+        application/json:
+          description: User object
+          schema:
+            type: object
+            properties:
+              user:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: Email of user
+                  photo:
+                    type: string
+                    description: User photo
+                  fname:
+                    type: string
+                    description: First name of user
+                  lname:
+                    type: string
+                    description: Last name of user
+                  isActive:
+                    type: boolean
+                    description: User activity flag
+                  categoryId:
+                    type: number
+                    description: User category id

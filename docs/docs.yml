@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: My Koa Test project
+  description: Made with love❤️️️️
+  version: 0.0.1
+  host: 
+tags:
+  - name: Users
+paths:
+  /sign-in:
+    $ref: /users/signIn.yml
+  /sign-up:
+    $ref: /users/signUp.yml
+  /profile:
+    $ref: /users/profile.yml
+  /photo:
+    $ref: /users/photo.yml
+  /admin:
+    $ref: /users/admin.yml
+  admin/:id/delete:
+    $ref: /users/adminDelete.yml
+servers:
+  - url: /
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
