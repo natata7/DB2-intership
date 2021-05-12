@@ -23,7 +23,7 @@ class Database {
   }
 }
 module.exports = new Database();
-*/
+
 const { Pool } = require('pg');
 
 class Database {
@@ -48,8 +48,8 @@ class Database {
   }
 }
 module.exports = new Database();
+*/
 
-/*
 const { Pool } = require('pg');
 
 class Database {
@@ -73,4 +73,4 @@ class Database {
     this.pool.end();
   }
 }
-module.exports = new Database(); */
+module.exports = new Database();
