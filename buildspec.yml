@@ -8,7 +8,9 @@ phases:
   build:
     commands:
       - echo Building docker image
-      - docker buildx build $APP_NAME:$IMAGE_TAG --build-arg PORT --build-arg DATABASE_USER --build-arg DATABASE_URL --build-arg DATABASE_NAME --build-arg DATABASE_PASS --build-arg MESSAGE -f Dockerfile --platform linux/amd64,linux/arm/v7,linux/arm64 .
+      - docker buildx build \
+      $APP_NAME:$IMAGE_TAG --build-arg PORT --build-arg DATABASE_USER --build-arg DATABASE_URL --build-arg DATABASE_NAME --build-arg DATABASE_PASS --build-arg MESSAGE -f Dockerfile \
+      --platform linux/amd64 .
       - docker tag $APP_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$APP_NAME:$IMAGE_TAG
       - echo Build completed on `date`
       - echo Docker image built and tagged
