@@ -13,6 +13,7 @@ module.exports = new JwtStrategy(opts, (jwtPayload, done) => {
     done({ isPassport: true, message: 'Expired access token.' }, false);
   }
 
+console.log(jwtPayload);
   UserDB.getUserById(jwtPayload.id)
     .then((user) => done(null, user.getInfo()))
     .catch((err) => done({ isPassport: true, message: err.message }, false));

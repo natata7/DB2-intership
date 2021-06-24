@@ -5,7 +5,7 @@ const { User } = require('./user');
 
 class UserDB {
   static async getUserById(id) {
-    const userResponse = await db.query(`SELECT * FROM "user" WHERE id = ${id}`);
+    const userResponse = await db.query(`SELECT * FROM users WHERE id = ${id}`);
 
     if (!userResponse.rowCount) {
       throw new Error(`User with id: ${id}, does not exist`);
@@ -15,7 +15,7 @@ class UserDB {
   }
 
   static async getUserByEmail(email) {
-    const userResponse = await db.query(`SELECT * FROM "users" WHERE email = '${email}'`);
+    const userResponse = await db.query(`SELECT * FROM users WHERE email = '${email}'`);
 
     if (!userResponse.rowCount) {
       throw new Error(`User with email: ${email}, does not exist`);
@@ -25,43 +25,46 @@ class UserDB {
   }
 
   static async checkPassword(email, password) {
+    console.log('hello');
     const userResponse = await db.query(`SELECT * FROM "users" WHERE email = '${email}'`);
-    const userResponse1 = await db.query(`SELECT * FROM "users"`);
-    console.log('response ' + userResponse.rows[0].pass);
 
     if (!userResponse.rowCount) {
+      const error = new Error(`User with email: ${email}, does not exist`);
+      console.log(error.message);
       return { message: `User with email: ${email}, does not exist`, flag: false };
     }
 
     const user = { ...userResponse.rows[0] };
+    console.log(user);
 
     if (crypto.pbkdf2Sync(password, 'salt', 100000, 64, 'sha256').toString('hex') !== user.pass) {
+      console.log('Incorect password');
       return { message: 'Incorect password', flag: false };
     }
 
     return { user: new User(user), flag: true };
   }
 
-  static async createUser(fname, lname, username, password, email) {
+  static async createUser(fname, lname, active, password, email, username) {
     try{
         const checkEmail = await db.query(`
-        SELECT * FROM "users" WHERE email = '${email}'`);
-
-        if(checkEmail.rows[0].email === email){
+        SELECT * FROM users WHERE email = '${email}'`);
+        console.log('check '+checkEmail.rows[0]);
+        if(!!checkEmail.rows[0]){
             const error = new Error('User with the same email already exists');
-            error.status = 400;
+            console.log(error.message);
             throw error;
-        }
-
+        } 
         const passwordHash = crypto.pbkdf2Sync(password, 'salt', 100000, 64, 'sha256').toString('hex');
 
         const createUserResponse = await db.query(`
-        INSERT INTO "users" (fname, lname, pass, email) 
-        VALUES ('${fname}', '${lname}', '${passwordHash}', '${email}') RETURNING *`)
-      
+        INSERT INTO users (fname, lname, pass, email, login) 
+        VALUES ('${fname}', '${lname}', '${passwordHash}', '${email}', '${username}') RETURNING id`)
         return new User(createUserResponse.rows[0]);
+        
     } catch (err) {
-        err.message
+        console.log(':(');
+        return err.message;
     }
   }
 

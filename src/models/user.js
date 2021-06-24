@@ -1,7 +1,7 @@
 class User {
   constructor(dbRes) {
     this._id = dbRes.id;
-    this._password = dbRes.password;
+    this._password = dbRes.pass;
 
     this.fname = dbRes.fname;
     this.lname = dbRes.lname;
@@ -13,6 +13,7 @@ class User {
 
   getInfo(idFlag = false) {
     const responseData = {
+      id: this.id,
       fname: this.fname,
       lname: this.lname,
       email: this.email,

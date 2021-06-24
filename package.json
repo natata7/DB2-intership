@@ -16,9 +16,10 @@
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.1.0",
-    "aws-sdk": "^2.903.0",
+    "aws-sdk": "^2.907.0",
     "config": "^3.3.6",
     "crypto": "^1.0.1",
+    "file-type": "^16.4.0",
     "ioredis": "^4.24.6",
     "jwt-simple": "^0.5.6",
     "koa": "^2.13.1",

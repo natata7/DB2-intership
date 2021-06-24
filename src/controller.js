@@ -4,17 +4,17 @@ const crypto = require('crypto');
 const passport = require('koa-passport');
 
 const uploadS3 = require('./utils/uploadS3');
-//const jwt = require('./utils/jwt');
+// const jwt = require('./utils/jwt');
 const User = require('./models/user');
 //const Token = require('./models/token');
-
+/*
 const Redis = require("ioredis");
 const redis = new Redis({
   port: 19458, 
   host: 'redis-19458.c251.east-us-mz.azure.cloud.redislabs.com',
   password: '5My1v1Vplrq1i2xb0zax9jcUNGc6elFn'
 });
-/*
+
 const redis = new Redis({
   port: 19458, 
   host: process.env.REDIS_DB,
@@ -84,19 +84,10 @@ async function list(ctx) {
 }
 
 async function showUsers(ctx) {
-
-
-  //const client = await pool.connect();
-  
-    //console.log(client);
     const usersResponse = await pool.query(`
-    SELECT users.fname, users.lname, users.email, users.country, users.status, users.level, users.id 
+    SELECT *
     FROM users`);
-    //await pool.end();
-
-    //const getRedis = await redis.hgetall('*');
-
-    //console.log(getRedis);
+  
     
     await ctx.render('admin', {
       title: "Manage users",
@@ -149,7 +140,7 @@ async function createPass(ctx) {
   console.log(body);
   body.password = crypto.pbkdf2Sync(body.password, 'salt', 100000, 64, 'sha256').toString('hex');
   console.log(body.password);
-  
+  createUser(ctx);
   const createUserResponse = await pool.query(`
     INSERT INTO users (pass)
     VALUES ('${body.password}')

@@ -1,4 +1,4 @@
-const config = require('../config/default');
+const config = require('config');
 const { fromBuffer } = require('file-type');
 const AWS = require('../libs/aws');
 

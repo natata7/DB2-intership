@@ -20,7 +20,7 @@ module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
       const { user } = checkPasswordResponse;
 
       const accessTokenPayload = {
-        id: user.id,
+        id: user._id,
         expiresIn: new Date().setTime(new Date().getTime() + 200000),
       };
 
@@ -38,3 +38,20 @@ module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
     })
     .catch((err) => done({ message: err.message }, false));
 });
+
+// module.exports = new LocalStrategy(opts, async (req, email, password, done) => {
+//   UserDB.getUserByEmail(email)
+//     .then((user) => {
+//     if (err) {
+//       return done('hello' + err);
+//     }
+//     if (!user) {
+//       return done('User doesn\'t exist!', false);
+//     }
+//     if (!user.checkPassword(password)) {
+//       return done('Incorrect password!', false);
+//     }
+//     return done(null, user);
+//   })
+//   .catch((err) => done({ message: err.message }, false));
+// };

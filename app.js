@@ -9,6 +9,7 @@ const nunjucks = require("nunjucks");
 const bodyParser = require('koa-body');
 const cors = require('@koa/cors');
 const { koaSwagger } = require('koa2-swagger-ui');
+const errorCatcher = require('./src/middlewares/errorCatcher');
 const port = process.env.PORT || 3001;
 
 const app = new Koa();
@@ -40,33 +41,44 @@ app.use(koaSwagger({
   },
 }));
 
-app.use(cors());
+app.use(errorCatcher);
+var options = {
+    origin: '*'
+};
+
+app.use(cors(options));
 app.use(bodyParser({
-  formidable:{uploadDir: './uploads'},
+  formidable:{
+    uploadDir: __dirname + '/uploads'},
   multipart: true,
-  urlencoded: true
+  urlencoded: true,
+  formLimit: '2mb',
 }));
 
 app.use(render);
 app.use(serve(path.join(__dirname, '/src/public')));
 
-//router.use('/users', require('./src/users/users.router'));
-
-//app.use(router.middleware());
-
-router.use("/", globalRouter.router.routes());
-app.use(router.routes());
-
 app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
-    if (err.isJoi) {
-      ctx.throw(400, err.details[0].message);
+    if (err) {
+      ctx.throw(400, err.message);
     }
     ctx.throw(400, 'Something wrong');
+    ctx.status = err.statusCode || err.status || 500;
+    ctx.body = {
+      message: err.message
+    };
   }
 });
+
+//router.use('/users', require('./src/users/users.router'));
+
+app.use(router.middleware());
+
+router.use("/", globalRouter.router.routes());
+app.use(router.routes());
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

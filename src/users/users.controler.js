@@ -6,15 +6,13 @@ const AWSS3 = require('../utils/uploadS3');
 
 class UsersController {
   static async signIn(ctx, next) {
-    const user = ctx.request.body;
-    console.log(ctx.request.body);
-    await passport.authenticate('local', (err, user) => {
+    const user = ctx.request.body.email;
+    const password = ctx.request.body.password;
+    await passport.authenticate('local', async (req, user, password, done) => {
       if (user) {
         ctx.body = user;
-        
       } else {
         ctx.status = 400;
-        console.log(user);
         if (err) {
           ctx.body = { error: err };
         }
@@ -23,6 +21,7 @@ class UsersController {
   }
 
   static async profile(ctx) {
+    // const user = (await UserDB.getUserById()).map((user) => user.getInfo());
     ctx.body = {
       user: ctx.state.user,
     };
@@ -30,11 +29,12 @@ class UsersController {
 
   static async createUser(ctx) {
     const {
-      fname, lname, password, email, active,
+      fname, lname, password, email, active, username
     } = ctx.request.body;
 
     ctx.status = 201;
-    ctx.body = (await UserDB.createUser(fname, lname, active, password, email));
+    ctx.body = (await UserDB.createUser(fname, lname, active, password, email, username));
+    return ctx.body;
   }
 
   static async refresh(ctx) {

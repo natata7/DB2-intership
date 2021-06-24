@@ -14,8 +14,21 @@ router.get('profile', passport.authenticate('jwt', { session: false }), UsersCon
 router.get('refresh/token', UsersController.refresh);
 router.post('add', UsersController.createUser);
 router.post('auth', UsersController.signIn);
+router.get('logout', async(req, res) => {
+    try{
+        let randomNumberToAppend = toString(Math.floor((Math.random() * 1000) + 1));
+        let randomIndex = Math.floor((Math.random() * 10) + 1);
+        let hashedRandomNumberToAppend = await bcrypt.hash(randomNumberToAppend, 10);
+    
+        // now just concat the hashed random number to the end of the token
+        req.token = req.token + hashedRandomNumberToAppend;
+        return res.status(200).json('logout');
+    }catch(err){
+        return res.status(500).json(err.message);
+    }
+});
 router.get('', passport.authenticate('jwt', { session: false }), UsersController.userList);
-router.put('photo', passport.authenticate('jwt', { session: false }), UsersController.updatePhoto);
+router.put('photo', passport.authenticate('jwt'), UsersController.updatePhoto);
 
 // Authentication
 //router.post("add", controllers.createUser);
